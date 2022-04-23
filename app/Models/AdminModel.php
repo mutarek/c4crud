@@ -29,13 +29,13 @@ class AdminModel extends Model
             return false;
         }
     }
-    public function RetriveSingle($title)
+    public function RetriveSingle($id)
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('post');
-        $employee = $builder->select('post_title','post_desc','post_image')
-                     ->where('post_title', $title)
-                     ->get()>getResult();
-        return $employee;
+        // $db = \Config\Database::connect();
+        // $builder = $db->table('post');
+        // $employee = $builder->select('post_title','post_desc','post_image')
+        //              ->where('post_title', $title)
+        //              ->get()>getResult();
+        // return $employee;
     }
 }

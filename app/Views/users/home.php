@@ -9,14 +9,14 @@
 <body>
     <?php foreach($data as $d):?>
         <div>
-        <h1><?= $d->post_title ?></h1>
+        <h1><?= $d['post_title']?></h1>
         <div>
-            <img src="<?= base_url();?>/public/assets/<?= $d->post_image ?>" alt="" height="200px" width="200px">
+            <img src="<?= base_url();?>/public/assets/<?= $d['post_image'] ?>" alt="" height="200px" width="200px">
         </div>
         <div>
             <p>content</p>
         </div>
-        <a href="<?= base_url('admin/FullArticle/'.$d->post_title); ?>">
+        <a href="<?= base_url('home/ShowSingle/'.$d['post_id']); ?>">
             More
         </a>
     </div>
