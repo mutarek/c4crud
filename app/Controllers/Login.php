@@ -15,7 +15,7 @@ use App\Models\LoginModel;
                 'psw'=> password_hash($this->request->getVar('psw'),PASSWORD_DEFAULT),
                 'email'=>$this->request->getVar('email'),
                 'number'=>$this->request->getVar('number'),
-                'uid'=>$uid,
+                'uniqueid'=>$uid,
             ];
             $login = new LoginModel();
             if($login->create($data))
@@ -48,13 +48,15 @@ use App\Models\LoginModel;
         } 
         return view('signup');
      }
-     public function activate($uid=null)
+     public function activate($uid)
      {
         $data = [];
         if(!empty($uid))
         {
             $rmodel = new LoginModel();
             $result = $rmodel->fetchSingle($uid);
+            print_r($result);
+            echo 'h';
             if($result)
             {
                 if($this->verifyTime($result->account_created))
@@ -65,7 +67,7 @@ use App\Models\LoginModel;
                     }
                     else
                     {
-                        
+
                     }
                 }
                 else

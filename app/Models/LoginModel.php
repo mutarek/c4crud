@@ -12,10 +12,12 @@ class LoginModel extends Model
     public function fetchSingle($uid)
     {
         $db = \Config\Database::connect();
-        $builder = $db->table('auths');
-        $builder->select('*');
-        $builder->where('uid',$uid);
-        $result = $builder->get();
+        $query = "SELECT * FROM auths WHERE uniqueid = $uid";
+        $response = $db->query($query)->get();
+        // $builder = $db->table('auths');
+        // $builder->select('is_verified,uniqueid,account_created');
+        // $builder->where('uniqueid',$uid);
+        // $result = $builder->get();
         if($builder->countAll() == 1)
         {
             return $result->getRow();
