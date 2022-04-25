@@ -59,7 +59,14 @@ use App\Models\LoginModel;
             {
                 if($this->verifyTime($result->account_created))
                 {
-                    echo "everything is okey";
+                    if($result->is_verified == 1)
+                    {
+                        $data['success'] = "Your Account is already Active";
+                    }
+                    else
+                    {
+                        
+                    }
                 }
                 else
                 {
