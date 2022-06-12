@@ -4,6 +4,10 @@ use CodeIgniter\Controller;
 use App\Models\LoginModel;
  class Login extends Controller
  {
+     public function index()
+     {
+         return view('home');
+     }
      public function createAccount()
      {
         helper('form');

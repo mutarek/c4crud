@@ -9,6 +9,28 @@ class Admin extends Controller
     public function __construct() {
     helper('form');
     }
+    public function dashboard()
+    {
+        $data =[];
+        $rules = [
+            'name'=>'required',
+            'descr'=>'required',
+            'filetoupload'=>'uploaded[filetoupload]|is_image[filetoupload]',
+            'category'=>'required'
+        ];
+        if($this->request->getMethod() == "post")
+        {
+            if($this->validate($rules))
+            {
+                echo 'can';
+            }
+            else
+            {
+               $data['fielderror'] = $this->validator;
+            }
+        }
+        return view('admin/dashboardview',$data);
+    }
     public function index()
     {
         $data = [];
